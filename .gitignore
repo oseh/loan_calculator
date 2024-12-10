@@ -1,0 +1,64 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+wheels/
+share/python-wheels/
+*.egg
+MANIFEST
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+venv.bak/
+
+# Testing
+.pytest_cache/
+.coverage
+.tox/
+
+# MyPy
+.mypy_cache/
+
+# Environments
+.env
+.envrc
+.python-version
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Caches
+*.cache
+*.log
+
+# PyCharm
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Database files
+*.db
+
+# Logs
+*.log
+
+# Ignore __pycache__ directories
+**/__pycache__/
