@@ -25,3 +25,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[virtualenvs]
+create = true
+in-project = true
