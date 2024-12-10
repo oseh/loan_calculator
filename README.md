@@ -41,14 +41,16 @@
 - [x] The user can update an existing calculation with new parameters.
 
 ### extra 
-- [x] caching lru for in memory data store.
-- [x] help and auto completion.
-- [x] compound interest.
+- [x] Caching lru for in memory data store.
+- [x] Help and auto completion.
+- [x] Compound interest.
 
 ### Todo 
-- [] record change history for auditing.
-- [] add adjustable breakdown periods.
-- [] persist data in a database of some kind. 
+- [ ] Record change history for auditing.
+- [ ] Add adjustable breakdown periods.
+- [ ] Persist data in a database of some kind.
+- [ ] create unit tests.
+- [ ] CI/CD
 
 
 
