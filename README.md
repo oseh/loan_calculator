@@ -1,3 +1,5 @@
+![Tests](https://github.com/oseh/loan_calculator/actions/workflows/ci.yml/badge.svg)
+
 ## Checklist
 
 ### Setup & Guidelines
@@ -49,7 +51,8 @@
 - [ ] Record change history for auditing.
 - [ ] Add adjustable breakdown periods.
 - [ ] Persist data in a database of some kind.
-- [ ] create unit tests.
+- [x] create unit tests.
+- [x] create unit tests for cli
 - [ ] CI/CD
 
 
