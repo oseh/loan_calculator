@@ -18,15 +18,15 @@ def daily_interest_data(
 ) -> List[Dict[str, str | float]]:
     start = parse_date(calc_data.start_date)
     end = parse_date(calc_data.end_date)
-    total_days = (end - start).days
+    total_days = (end - start).days + 1
     if total_days < 1:
         return []
 
     results: List[Dict[str, str | float]] = []
     days_counted = 0
     current_amount = calc_data.amount 
-    for i in range(total_days):
-        accrual_date = start + timedelta(days=i+1)
+    for i in range(0, total_days):
+        accrual_date = start + timedelta(days=i)
         if calc_data.exclude_weekends and is_weekend(accrual_date):
             continue
         days_counted += 1
@@ -34,10 +34,12 @@ def daily_interest_data(
         if calc_data.method == "compound":
             daily_base = simple_interest_daily(current_amount, calc_data.base_rate)
             daily_total = simple_interest_daily(current_amount, calc_data.base_rate + calc_data.margin)
-            current_amount += daily_total  
-        else:
+            current_amount += daily_total
+        elif calc_data.method == "simple":
             daily_base = simple_interest_daily(calc_data.amount, calc_data.base_rate)
             daily_total = simple_interest_daily(calc_data.amount, calc_data.base_rate + calc_data.margin)
+        else:
+            raise ValueError(f"Unknown method: {calc_data.method}")
 
         results.append({
             "Accrual Date": accrual_date.strftime("%Y-%m-%d"),

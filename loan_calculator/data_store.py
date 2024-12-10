@@ -24,10 +24,11 @@ next_id: int = 0
 
 def save_calculation(caldata: CalculationData, calc_id: int = -1) -> int:
     global next_id
-    calculations[calc_id if calc_id != -1 else next_id] = caldata
-    next_id += 1
-    current_id: int = next_id - 1
-    return current_id
+    if calc_id == -1:
+        calc_id = next_id
+        next_id += 1
+    calculations[calc_id] = caldata
+    return calc_id
 
 def get_calculation(calc_id: int) -> CalculationData:
     return calculations.get(calc_id)

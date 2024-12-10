@@ -1,6 +1,6 @@
 import cmd2
 import argparse
-from loan_calculator.interest_calculations import daily_interest_data, total_interest
+from loan_calculator.interest_calculations import daily_interest_data, total_interest, parse_date
 from loan_calculator.data_store import save_calculation, get_calculation, list_calculations, CalculationData
 from loguru import logger
 from tabulate import tabulate
@@ -30,8 +30,8 @@ class LoanCalculator(cmd2.Cmd):
             calculate 2024-01-01 2024-02-01 10000 USD 5.0 2.0 --exclude_weekends --method simple
         """
         try:
-            start_date = datetime.strptime(args.start_date, "%Y-%m-%d")
-            end_date = datetime.strptime(args.end_date, "%Y-%m-%d")
+            start_date = parse_date(args.start_date)
+            end_date = parse_date(args.end_date)
             if end_date <= start_date:
                 self.perror("End date must be after start date.")
                 return
@@ -149,9 +149,8 @@ class LoanCalculator(cmd2.Cmd):
             update 1 2024-01-01 2024-02-01 10000 USD 5.0 2.0 --exclude_weekends --method compound
         """
         try:
-            # Validate date formats
-            start_date = datetime.strptime(args.start_date, "%Y-%m-%d")
-            end_date = datetime.strptime(args.end_date, "%Y-%m-%d")
+            start_date = parse_date(args.start_date)
+            end_date = parse_date(args.end_date)
             if end_date <= start_date:
                 self.perror("End date must be after start date.")
                 return
@@ -191,13 +190,11 @@ class LoanCalculator(cmd2.Cmd):
         self.poutput("Thank you for using the Loan Calculator. Goodbye!")
         return True
 
-    # Adding alias for 'exit'
     do_exit = do_quit
 
     def do_help(self, args):
         """Provide detailed help with examples."""
         if args:
-            # If specific command help is requested
             super().do_help(args)
         else:
             self.poutput("Loan Calculator Commands:\n")
